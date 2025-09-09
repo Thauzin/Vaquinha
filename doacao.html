@@ -6,6 +6,64 @@
     <title>Vaquinha</title>
     <link href="/Vaquinha/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCcbTWwFuYWo5grHbNmt27jSjkimcxoB00",
+    authDomain: "vaquinha-f152e.firebaseapp.com",
+    databaseURL: "https://vaquinha-f152e-default-rtdb.firebaseio.com",
+    projectId: "vaquinha-f152e",
+    storageBucket: "vaquinha-f152e.firebasestorage.app",
+    messagingSenderId: "893186118238",
+    appId: "1:893186118238:web:31400d85b689ca92041acf",
+    measurementId: "G-HXTCH6EH7V"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  import { getDatabase, ref, push, set } from "firebase/database";
+
+const database = getDatabase();
+const form = document.getElementById("formDoacao");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById("nome").value || "Anônimo";
+  const valor = document.getElementById("valor").value;
+  const mensagem = document.getElementById("mensagem").value;
+  const anonimo = document.getElementById("anonimo").checked;
+
+  // Se marcar "não quero me identificar", força nome como "Anônimo"
+  const nomeFinal = anonimo ? "Anônimo" : nome;
+
+  // Enviar para o Firebase
+  const doacoesRef = ref(database, 'doacoes');
+  const novaDoacaoRef = push(doacoesRef);
+
+  set(novaDoacaoRef, {
+    nome: nomeFinal,
+    valor: Number(valor),
+    mensagem: mensagem
+  })
+  .then(() => {
+    alert("Doação registrada com sucesso!");
+    form.reset();
+  })
+  .catch((error) => console.error("Erro ao enviar doação:", error));
+});
+
+</script>
+
 <body class="bg-primary-subtle"> 
     <div class="p-3 mb-2 bg-info">
     <ul class="nav justify-content-center">
@@ -41,3 +99,4 @@
 
 </body>
 </html>
+
