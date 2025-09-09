@@ -56,10 +56,10 @@ form.addEventListener("submit", (e) => {
     mensagem: mensagem
   })
   .then(() => {
-    alert("Doação registrada com sucesso!");
     form.reset();
+    href("qrcode.html")
   })
-  .catch((error) => console.error("Erro ao enviar doação:", error));
+  .catch((error) => console.error("Erro ao enviar dados:", error));
 });
 
 </script>
