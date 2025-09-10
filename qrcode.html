@@ -6,20 +6,26 @@
     <title>Vaquinha</title>
     <link href="/Vaquinha/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<script>
+  // Depois de 10 minutos (600.000 ms) redireciona para outra página
+    setTimeout(() => {
+    window.location.href = "index.html"; 
+  }, 60000); // 600.000 ms = 10 minutos
+</script>
 <body class="bg-primary-subtle"> 
     <div class="p-3 mb-2 bg-info">
     <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active fs-5 text-dark" aria-current="page" href="#" >Vaquinha Online</a>
+    <a class="nav-link active fs-5 text-dark" aria-current="page" href="/Vaquinha/index.html" >Vaquinha Online</a>
   </li>
     <li class="nav-item">
-    <a class="nav-link active fs-5 text-dark" aria-current="page" href="#" >Conheça a história</a>
+    <a class="nav-link active fs-5 text-dark" aria-current="page" href="/Vaquinha/historia.html" >Conheça a história</a>
   </li>
   </div>
 </ul>
 <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
 <div class="card" style="width: 18rem;">
-  <img src="/Vaquinha/Images/qr.png" class="card-img-top" alt="...">
+  <img src="/Vaquinha/Images/qroficial.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Escaneie o QR code e faça sua doação</h5>
     <p class="card-text">Informações do Pix, banco, etc</p>
@@ -27,6 +33,14 @@
   </div>
 </div>
 </div>
+<nav class="navbar fixed-bottom">
+  <div class="container-fluid" style="height: 5vh;">
+    <span class="navbar-text text-center" >
+      Made by Thauany F. M.
+    </span>
+  </div>
+</nav>
 
 </body>
+
 </html>
