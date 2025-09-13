@@ -7,12 +7,6 @@
     <link href="/Vaquinha/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-primary-subtle"> 
-  <script>
-  // Depois de 10 minutos (600.000 ms) redireciona para outra página
-    setTimeout(() => {
-    window.location.href = "index.html"; 
-  }, 60000); // 600.000 ms = 10 minutos
-</script>
     <div class="p-3 mb-2 bg-info">
     <ul class="nav justify-content-center">
   <li class="nav-item">
@@ -28,7 +22,8 @@
   <img src="/Vaquinha/Images/qroficial.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Escaneie o QR code e faça sua doação</h5>
-    <p class="card-text">Informações do Pix, banco, etc</p>
+    <p class="card-text">Ou clique aqui para copiar a chave pix: 
+    <span id="copy" style="cursor:pointer; color:black">42998301782 </span> </p> 
     <a href="index.html" class="btn btn-info">VOLTAR</a>
   </div>
 </div>
@@ -40,6 +35,22 @@
     </span>
   </div>
 </nav>
+  
+
+  <script>
+    const copyEl = document.getElementById("copy");
+
+    copyEl.addEventListener("click", async () => {
+      const text = copyEl.textContent;
+      try {
+        await navigator.clipboard.writeText(42998301782);
+        copyEl.textContent = "Copiado ✓";
+        setTimeout(() => copyEl.textContent = "42998301782", 1500);
+      } catch (e) {
+        alert("Não foi possível copiar. Copie manualmente.");
+      }
+    });
+  </script>
 
 </body>
 
